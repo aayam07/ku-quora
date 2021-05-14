@@ -1,0 +1,35 @@
+{% extends 'account/base.html' %}
+{% block content %}
+
+  <form action="" method = "POST" id='signin' class = 'wrapper'>
+            {% csrf_token %}
+        <div class="logo ">
+            <h1>Quora : )</h1>
+        </div>
+        <div class="welcome-text ">
+            <span>Hey there!</span>
+            <span>Welcome again,  Let's sign In</span>
+        </div>
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags %}
+                        <span class = "message {{message.tags}}">{{message}}</span>
+                    {% endif %}
+                {% endfor %}
+             {% endif %}
+        
+            <div class="field username">
+                <input type="text" name='username' id='username'  required>
+                <label for="username">Username</label>
+            </div>
+        
+            <div class="field password">
+                <input type="password" name='password' id='password' required >
+                <label for="password"> Password</label>
+            </div>
+            <input type="submit" value = "Sign In">
+
+            <a href="{% url 'signup' %}">Don't have an account? SignUp</a>
+</form>
+
+{% endblock %}

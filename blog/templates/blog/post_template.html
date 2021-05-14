@@ -1,0 +1,61 @@
+
+<div class="blog-post">
+    <div class="header">
+        <div class="profile">
+                <a href="{% url 'profile' post.user.id %}"><img src="{{post.user.profile.image.url}}" alt="" ></a>
+        </div>
+        <div>
+            <span class="author">{{post.user.username}}</span>
+            <span class="time-stamp">{{post.posted_on}}</span>
+        </div>
+    </div>
+    <div class="body">
+        <h2 class = "title"><a href="{{post.get_absolute_url}}">{{post.title}}</a></h1>
+        <span class="tags">
+           {% for tag  in post.tags.all %}
+                <a href="{% url 'tags' tag.slug %}">#{{tag}}</a>
+           {% endfor %}
+        </span>
+        <div class="text"> 
+            {{post.body}}
+        </div>
+        <div class="image">
+            <!-- <img src="/media/profile.png" alt=""> -->
+        </div>
+    </div>
+    <div class="footer">
+        <div class="buttons">
+            <div class="like">
+                {% csrf_token %}
+                <i data-post_id = '{{post.id}}'data-url = "{% url 'like_post' %}" class="fas fa-thumbs-up
+                {% if post.id in liked_posts_ids %}
+                    liked
+                {% endif %}
+                "></i>
+                <span class="count">{{post.likes}}</span>
+            </div>
+            <div class="dislike">
+                <i data-post_id='{{post.id}}' data-url = "{% url 'dislike_post' %}" class="fas fa-thumbs-down
+                {% if post.id in disliked_posts_ids %}
+                     disliked
+                {% endif %}
+                "></i>
+                <span class="count">{{post.dislikes}}</span>
+            </div>
+            <div class="comment">
+                <i class="fas fa-comment"></i>
+                <span class="count">0</span>
+            </div>
+            <div class="options">
+                <i class="fas fa-ellipsis-h"></i>
+                <ul>
+                    {% if post.user == request.user %}
+                         <li><a href="">delete</a></li>
+                    {% else %}
+                        <li><a href="">hide<a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

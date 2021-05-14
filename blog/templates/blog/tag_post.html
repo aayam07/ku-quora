@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<h1 class='tag-banner wrapper'>#{{tag}}</h1>
+
+
+{% for post in posts %}
+{% include 'blog/post_template.html' %}
+{% endfor %}
+
+
+
+
+{% endblock %}

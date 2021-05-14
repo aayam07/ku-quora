@@ -1,0 +1,22 @@
+<nav>
+    <ul class = "wrapper">
+            <li class='logo'><a href="{% url 'home' %}">Quora</a></li>
+            <ul class="icons-1">
+                <li><a href="{% url 'home' %}"><i class="fas fa-home"></i></a></li>
+                <li><a href=""><i class="fas fa-list"></i></a></li>
+                <li><a href=""><i class="fas fa-bell"></i></a></li>
+            </ul>
+            <ul class="icons-2">
+                <div class="search-box">
+                    <input type="text" placeholder = 'Search Quora'>
+                </div>
+                <div class="profile-icon">
+                    <img src="{{request.user.profile.image.url}}" alt="">
+                    <ul>
+                        <li><a href="{% url 'profile' request.user.id %}">{{request.user}}</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </div>
+            </ul>
+    </ul>
+</nav>

@@ -1,0 +1,47 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+
+<div class="add-question">
+    <div class="visible-part">
+        <div class="profile-info">
+            <img src="{{user.profile.image.url}}" alt="">
+            <span class='username'>{{user.username}}</span>
+        </div>
+        <div class="text">What is your question?</div>
+    </div>
+    <div class="overlay">
+        <form action="{% url 'create_post' %}" method = 'POST' >
+            {% csrf_token %}
+            <div class="profile-info">
+                <img src="{{user.profile.image.url}}" alt="">
+                <span class='username'>{{user.username}}</span>
+            </div>
+            <ul class="tips">
+                <h3>Tips on getting good answers quickly</h3>
+                <li>Ask question in a way everyone could understand.</li>
+                <li>Double check grammar and spelling</li>
+                <li>Keep your question short and to the point.</li>
+            </ul>
+            <input type="text" name='title' placeholder = "Title of your question" required>
+            <input type="text" name='tags' placeholder = "Tags for your question to be included in hastags" required>
+            <input type="text" name = 'body' placeholder = "Start your question with 'what,how,when..." required>
+            <input type="submit" value = 'Add Question'>
+            <button>Cancel</button>
+        </form>
+    </div>
+    
+</div>
+
+
+
+{% for post in posts %}
+{% include 'blog/post_template.html' %}
+{% endfor %}
+
+
+
+
+
+
+{% endblock %}

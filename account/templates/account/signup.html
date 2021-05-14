@@ -1,0 +1,52 @@
+{% extends 'account/base.html' %}
+{% block content %}
+
+   
+        <form action="" method = "POST" id='signup' class = 'wrapper'>
+                {% csrf_token %}
+        <!-- <h1>signUp page</h1> -->
+        <div class="logo ">
+            <h1>Quora : )</h1>
+        </div>
+        <div class="welcome-text ">
+            <span>Hey there!</span>
+            <span>Welcome,  Let's sign up</span>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}
+                <span class = "message {{message.tags}}">{{message}}</span>
+            {% endif %}
+            {% endfor %}
+
+             {% endif %}
+            <div class="field first_name"> 
+                <input type="text" name='first_name' id='first_name'  required>
+                <label for="first_name">First name</label>
+            </div>
+            <div class="field last_name">
+                <input type="text" name='last_name' id='last_name'  required>
+                <label for="last_name">Last name</label>
+            </div>
+            <div class="field username">
+                <input type="text" name='username' id='username'  required>
+                <label for="username">Username</label>
+            </div>
+            <div class="field email">
+                <input type="text" name='email' id='email'  required>
+                <label for="email">Email</label>
+            </div>
+            <div class="field password1">
+                <input type="password" name='password1' id='password1'  required>
+                <label for="password1">Password</label>
+            </div>
+            <div class="field password2">
+                <input type="password" name='password2' id='password2' required >
+                <label for="password2">Confirm Password</label>
+            </div>
+            <input type="submit" value = "Sign Up">
+
+            <a href="{% url 'signin' %}">Already have an account? SignIn</a>
+</form>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+user - first name,last name,username,password , email
+profile - img , gender , 
+post - title , tag , ....
+follow - follower , following
+liked - user , post
+dislikes - user , post
+comment - 
+
