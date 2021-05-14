@@ -1,1 +1,3 @@
 # ku-quora
+
+ist prototype
