@@ -4,6 +4,7 @@ import uuid
 from django.db.models.signals import post_save
 from django.utils.text import slugify
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 
 class Tag(models.Model):
@@ -28,7 +29,8 @@ class Tag(models.Model):
 class Post(models.Model):
     id = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
     title = models.CharField(max_length = 100,verbose_name='Title')
-    body = models.TextField(verbose_name='Body')
+    body = RichTextField(blank=True, null=True)
+    # body = models.TextField(verbose_name='Body')
     posted_on = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(Tag,related_name='tags')
     user = models.ForeignKey(User,on_delete=models.CASCADE)

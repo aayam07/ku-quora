@@ -43,11 +43,10 @@ def index_view(request):
     return render(request,'blog/index.html',context)
 
 
-
 @login_required
 def create_post_view(request):
     user = request.user
-    tags_objs = []
+    tags_objs = [] #empty list
     title = request.POST.get('title')
     body = request.POST.get('body')
     tags = request.POST.get('tags')

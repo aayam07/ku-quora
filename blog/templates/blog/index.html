@@ -10,9 +10,12 @@
         </div>
         <div class="text">What is your question?</div>
     </div>
+    <div class="container">
     <div class="overlay">
-        <form action="{% url 'create_post' %}" method = 'POST' >
+        <form action="{% url 'create_post' %}" method='POST'>
             {% csrf_token %}
+            {{ form.media }}
+            
             <div class="profile-info">
                 <img src="{{user.profile.image.url}}" alt="">
                 <span class='username'>{{user.username}}</span>
@@ -23,14 +26,19 @@
                 <li>Double check grammar and spelling</li>
                 <li>Keep your question short and to the point.</li>
             </ul>
-            <input type="text" name='title' placeholder = "Title of your question" required>
-            <input type="text" name='tags' placeholder = "Tags for your question to be included in hastags" required>
-            <script type="text/javascript" src="static/tinyInject.js" name = 'body' id='body' placeholder = "Start your question with 'what,how,when..." required></script>
-            <input type="submit" value = 'Add Question'>
+            <input type="text" name='title' placeholder="Title of your question" required>
+            <input type="text" name='tags' placeholder="Tags for your question to be included in hastags" required>
+            {% comment %} <textarea id="body" name="body" rows="7" columns="10">
+            </textarea> {% endcomment %}
+            <script type="text/javascript" src="static/tinyInject.js" name='body' id='body'
+                placeholder="Start your question with 'what,how,when..." required> </script> 
+            <input type="submit" value='Add Question'>
             <button>Cancel</button>
+        
         </form>
     </div>
-    
+    </div>
+
 </div>
 
 

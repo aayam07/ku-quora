@@ -17,7 +17,7 @@
            {% endfor %}
         </span>
         <div class="text"> 
-            {{post.body}}
+            {{post.body|safe}}
         </div>
         <div class="image">
             <!-- <img src="/media/profile.png" alt=""> -->
@@ -45,7 +45,10 @@
             <div class="comment">
                 <i class="fas fa-comment"></i>
                 <span class="count">0</span>
+                
             </div>
+            
+            
             <div class="options">
                 <i class="fas fa-ellipsis-h"></i>
                 <ul>
